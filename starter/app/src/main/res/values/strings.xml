@@ -16,4 +16,19 @@
     <string name="paragraph_instruction1_text">1. On the next screen you can scroll through various shoes</string>
     <string name="paragraph_instruction2_text">2. You can also add a new one by clicking +(plus) button in the lower right corner</string>
     <string name="paragraph_instruction3_text">3. And finally you can see a new shoe in the list.\n\nHave fun!</string>
+    <string name="logout_menu">Logout</string>
+
+<!--    ShoeDetail screen-->
+    <string name="shoe_name_detail_text">Shoe Name</string>
+    <string name="company_detail_text">Company</string>
+    <string name="shoe_size_detail_text">Size</string>
+    <string name="description_detail_text">Description</string>
+
+    <string name="shoe_name_detail_hint">Enter shoe model…</string>
+    <string name="company_detail_hint">e.g. Adidas, Nike,…</string>
+    <string name="shoe_size_detail_hint">e.g. 10.5</string>
+    <string name="description_detail_hint">Type condition, color, season,…</string>
+
+    <string name="save_generic">Save</string>
+    <string name="cancel_generic">Cancel</string>
 </resources>

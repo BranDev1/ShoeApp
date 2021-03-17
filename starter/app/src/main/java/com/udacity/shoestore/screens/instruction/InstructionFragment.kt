@@ -16,8 +16,6 @@ class InstructionFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.instruction_fragment, container, false)
         val binding: InstructionFragmentBinding =
             DataBindingUtil.inflate(inflater, R.layout.instruction_fragment, container, false)
         binding.instructionButton.setOnClickListener {
