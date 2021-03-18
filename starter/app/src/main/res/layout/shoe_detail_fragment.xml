@@ -4,6 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".screens.shoedetail.ShoeDetailFragment">
 
+    <data>
+
+        <variable
+            name="sharedViewModel"
+            type="com.udacity.shoestore.SharedViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -85,7 +92,7 @@
             android:layout_marginEnd="16dp"
             android:ems="10"
             android:hint="@string/shoe_size_detail_hint"
-            android:inputType="numberSigned"
+            android:inputType="numberDecimal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/shoe_size_detail_text"
             app:layout_constraintTop_toBottomOf="@+id/shoe_size_detail_text" />
@@ -107,12 +114,12 @@
 
         <Button
             android:id="@+id/cancel_detail_button"
+            style="@style/ButtonColoredInverse"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
-            style="@style/ButtonColoredInverse"
             android:text="@string/cancel_generic"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -120,10 +127,11 @@
 
         <Button
             android:id="@+id/save_detail_button"
+            style="@style/ButtonColored"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            style="@style/ButtonColored"
+            android:onClick="@{() -> sharedViewModel.onDataSave()}"
             android:text="@string/save_generic"
             app:layout_constraintBottom_toTopOf="@+id/cancel_detail_button"
             app:layout_constraintEnd_toEndOf="@+id/cancel_detail_button"
