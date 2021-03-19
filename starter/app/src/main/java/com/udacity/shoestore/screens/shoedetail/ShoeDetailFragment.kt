@@ -35,7 +35,7 @@ class ShoeDetailFragment : Fragment() {
 
         viewModel.eventDataSave.observe(viewLifecycleOwner, Observer { isSaved ->
             if (isSaved) {
-                sharedViewModel.shoeList.value?.add(
+                sharedViewModel.onSave(
                     Shoe(
                         binding.shoeNameDetailEdit.text.toString(),
                         binding.shoeSizeDetailEdit.text.toString().toDouble(),
@@ -43,14 +43,6 @@ class ShoeDetailFragment : Fragment() {
                         binding.descriptionDetailEdit.text.toString()
                     )
                 )
-//                sharedViewModel.onSave(
-//                    Shoe(
-//                        binding.shoeNameDetailEdit.text.toString(),
-//                        binding.shoeSizeDetailEdit.text.toString().toDouble(),
-//                        binding.companyDetailEdit.text.toString(),
-//                        binding.descriptionDetailEdit.text.toString()
-//                    )
-//                )
                 findNavController().navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoesFragment())
                 viewModel.onDataSaveComplete()
             }

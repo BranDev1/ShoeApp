@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         setSupportActionBar(binding.toolbar)
         viewModel = ViewModelProvider(this).get(SharedViewModel::class.java)
+
         Timber.plant(Timber.DebugTree())
 
         val navHostFragment =
