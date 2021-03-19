@@ -5,10 +5,9 @@
     tools:context=".screens.shoedetail.ShoeDetailFragment">
 
     <data>
-
         <variable
-            name="sharedViewModel"
-            type="com.udacity.shoestore.SharedViewModel" />
+            name="shoeDetailViewModel"
+            type="com.udacity.shoestore.screens.shoedetail.ShoeDetailViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -131,8 +130,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:onClick="@{() -> sharedViewModel.onDataSave()}"
             android:text="@string/save_generic"
+            android:onClick="@{() -> shoeDetailViewModel.onDataSave()}"
             app:layout_constraintBottom_toTopOf="@+id/cancel_detail_button"
             app:layout_constraintEnd_toEndOf="@+id/cancel_detail_button"
             app:layout_constraintStart_toStartOf="@+id/cancel_detail_button" />

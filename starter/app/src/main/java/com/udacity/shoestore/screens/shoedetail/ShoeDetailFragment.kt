@@ -8,16 +8,17 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.R
 import com.udacity.shoestore.SharedViewModel
 import com.udacity.shoestore.databinding.ShoeDetailFragmentBinding
 import com.udacity.shoestore.models.Shoe
-import timber.log.Timber
 
 class ShoeDetailFragment : Fragment() {
 
-    private val viewModel: SharedViewModel by activityViewModels()
+    private val sharedViewModel: SharedViewModel by activityViewModels()
+    private lateinit var viewModel: ShoeDetailViewModel
     private lateinit var binding: ShoeDetailFragmentBinding
 
     override fun onCreateView(
@@ -25,19 +26,16 @@ class ShoeDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.shoe_detail_fragment, container, false)
+        viewModel = ViewModelProvider(this).get(ShoeDetailViewModel::class.java)
+        binding.shoeDetailViewModel = viewModel
 
         binding.cancelDetailButton.setOnClickListener {
             findNavController().navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoesFragment())
         }
 
-//        binding.saveDetailButton.setOnClickListener {
-//            viewModel.onDataSave()
-//        }
-
         viewModel.eventDataSave.observe(viewLifecycleOwner, Observer { isSaved ->
             if (isSaved) {
-                Timber.i("${binding.shoeSizeDetailEdit.text}")
-                viewModel.onSave(
+                sharedViewModel.shoeList.value?.add(
                     Shoe(
                         binding.shoeNameDetailEdit.text.toString(),
                         binding.shoeSizeDetailEdit.text.toString().toDouble(),
@@ -45,6 +43,14 @@ class ShoeDetailFragment : Fragment() {
                         binding.descriptionDetailEdit.text.toString()
                     )
                 )
+//                sharedViewModel.onSave(
+//                    Shoe(
+//                        binding.shoeNameDetailEdit.text.toString(),
+//                        binding.shoeSizeDetailEdit.text.toString().toDouble(),
+//                        binding.companyDetailEdit.text.toString(),
+//                        binding.descriptionDetailEdit.text.toString()
+//                    )
+//                )
                 findNavController().navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoesFragment())
                 viewModel.onDataSaveComplete()
             }
