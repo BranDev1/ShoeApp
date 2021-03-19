@@ -12,6 +12,7 @@
         <action
             android:id="@+id/action_loginFragment_to_welcomeFragment"
             app:destination="@id/welcomeFragment"
+            app:launchSingleTop="true"
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -22,7 +23,10 @@
         tools:layout="@layout/welcome_fragment" >
         <action
             android:id="@+id/action_welcomeFragment_to_instructionFragment"
-            app:destination="@id/instructionFragment" />
+            app:destination="@id/instructionFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/welcomeFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/instructionFragment"
@@ -31,7 +35,10 @@
         tools:layout="@layout/instruction_fragment" >
         <action
             android:id="@+id/action_instructionFragment_to_shoesFragment2"
-            app:destination="@id/shoesFragment" />
+            app:destination="@id/shoesFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/instructionFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/shoesFragment"
@@ -40,7 +47,8 @@
         tools:layout="@layout/shoes_fragment" >
         <action
             android:id="@+id/action_shoesFragment_to_shoeDetailFragment"
-            app:destination="@id/shoeDetailFragment" />
+            app:destination="@id/shoeDetailFragment"
+            app:launchSingleTop="true" />
         <argument
             android:name="newShoe"
             app:argType="com.udacity.shoestore.models.Shoe"
@@ -55,6 +63,7 @@
         <action
             android:id="@+id/action_shoeDetailFragment_to_shoesFragment"
             app:destination="@id/shoesFragment"
+            app:launchSingleTop="true"
             app:popUpTo="@id/shoeDetailFragment"
             app:popUpToInclusive="true" />
     </fragment>

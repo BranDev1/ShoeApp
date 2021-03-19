@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 
 class ShoeDetailViewModel : ViewModel() {
     private val _eventDataSave = MutableLiveData<Boolean>()
-    val eventDataSave : LiveData<Boolean> = _eventDataSave
+    val eventDataSave: LiveData<Boolean> = _eventDataSave
 
     init {
         _eventDataSave.value = false

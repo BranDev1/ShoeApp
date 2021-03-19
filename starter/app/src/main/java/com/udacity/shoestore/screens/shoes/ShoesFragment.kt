@@ -2,9 +2,9 @@ package com.udacity.shoestore.screens.shoes
 
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
-import androidx.fragment.app.Fragment
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
@@ -13,7 +13,6 @@ import androidx.navigation.ui.NavigationUI
 import com.udacity.shoestore.R
 import com.udacity.shoestore.SharedViewModel
 import com.udacity.shoestore.databinding.ShoesFragmentBinding
-import com.udacity.shoestore.models.Shoe
 
 class ShoesFragment : Fragment() {
 
@@ -24,18 +23,32 @@ class ShoesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val binding: ShoesFragmentBinding = DataBindingUtil.inflate(
-            inflater, R.layout.shoes_fragment, container, false)
+            inflater, R.layout.shoes_fragment, container, false
+        )
         setHasOptionsMenu(true)
+        shoeListObserver(binding)
 
-        viewModel.shoeList.observe(viewLifecycleOwner, Observer { list ->
-            Toast.makeText(activity, list[0].name, Toast.LENGTH_LONG).show()
-        })
-        
         binding.fab.setOnClickListener {
             findNavController().navigate(ShoesFragmentDirections.actionShoesFragmentToShoeDetailFragment())
         }
 
         return binding.root
+    }
+
+    private fun shoeListObserver(binding: ShoesFragmentBinding) {
+        viewModel.shoeList.observe(viewLifecycleOwner, Observer { list ->
+            if (list.isNotEmpty()) {
+                list.forEach { shoe ->
+                    val textView = TextView(activity)
+                    textView.apply {
+                        text = shoe.name
+                        textSize = 32f
+                        gravity = Gravity.CENTER_HORIZONTAL
+                    }
+                    binding.shoeLayout.addView(textView)
+                }
+            }
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

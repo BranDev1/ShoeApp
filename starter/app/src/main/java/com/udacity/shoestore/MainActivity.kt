@@ -8,7 +8,6 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.udacity.shoestore.databinding.ActivityMainBinding
-import com.udacity.shoestore.screens.shoedetail.ShoeDetailViewModel
 import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
@@ -20,8 +19,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         setSupportActionBar(binding.toolbar)
-        viewModel = ViewModelProvider(this).get(SharedViewModel::class.java)
 
+        viewModel = ViewModelProvider(this).get(SharedViewModel::class.java)
         Timber.plant(Timber.DebugTree())
 
         val navHostFragment =
