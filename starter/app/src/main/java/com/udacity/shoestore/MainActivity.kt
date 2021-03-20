@@ -31,7 +31,8 @@ class MainActivity : AppCompatActivity() {
             .Builder(
                 R.id.loginFragment,
                 R.id.welcomeFragment,
-                R.id.shoesFragment)
+                R.id.shoesFragment
+            )
             .build()
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration)
     }

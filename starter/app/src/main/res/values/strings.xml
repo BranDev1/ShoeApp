@@ -6,8 +6,6 @@
     <string name="password_hint">Enter your password</string>
     <string name="existing_login_button">Login with existing user</string>
     <string name="new_login_button">Login with new user</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="header_welcome_text">Welcome!</string>
     <string name="paragraph_welcome_text">Welcome in this app! Where you can check your shoes and also store a new one.\n\n\nSo stop talking and let\'s do it!</string>
@@ -31,4 +29,9 @@
 
     <string name="save_generic">Save</string>
     <string name="cancel_generic">Cancel</string>
+    <string name="login_appbar">Login</string>
+    <string name="welcome_appbar">Welcome</string>
+    <string name="instruction_appbar">Instructions</string>
+    <string name="shoes_appbar">Shoes</string>
+    <string name="shoe_details_appbar">Shoe details</string>
 </resources>
