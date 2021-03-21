@@ -18,7 +18,6 @@ import com.udacity.shoestore.models.Shoe
 class ShoeDetailFragment : Fragment() {
 
     private val sharedViewModel: SharedViewModel by activityViewModels()
-    private lateinit var viewModel: ShoeDetailViewModel
     private lateinit var binding: ShoeDetailFragmentBinding
 
     override fun onCreateView(
@@ -26,29 +25,19 @@ class ShoeDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.shoe_detail_fragment, container, false)
-        viewModel = ViewModelProvider(this).get(ShoeDetailViewModel::class.java)
-        binding.shoeDetailViewModel = viewModel
+        binding.shoeDetailFragment = this
+        binding.shoe = Shoe("", 0.0,"","")
 
         binding.cancelDetailButton.setOnClickListener {
             findNavController().navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoesFragment())
         }
 
-        viewModel.eventDataSave.observe(viewLifecycleOwner, Observer { isSaved ->
-            if (isSaved) {
-                sharedViewModel.onSave(
-                    Shoe(
-                        binding.shoeNameDetailEdit.text.toString(),
-                        binding.shoeSizeDetailEdit.text.toString().toDouble(),
-                        binding.companyDetailEdit.text.toString(),
-                        binding.descriptionDetailEdit.text.toString()
-                    )
-                )
-                findNavController().navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoesFragment())
-                viewModel.onDataSaveComplete()
-            }
-        })
-
         return binding.root
+    }
+
+    fun saveShoe(shoe: Shoe){
+        sharedViewModel.onSave(shoe)
+        findNavController().navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoesFragment())
     }
 
 
